@@ -31,6 +31,7 @@ namespace rbdyn_urdf
 struct Urdf
 {
   Urdf() {}
+  Urdf(const Urdf& urdf);
   Urdf(Urdf&& urdf);
 
   rbd::MultiBodyGraph mbg;

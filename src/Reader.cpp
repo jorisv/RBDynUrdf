@@ -148,6 +148,17 @@ Urdf mbgFromModel(const boost::shared_ptr<urdf::ModelInterface>& model)
 }
 
 
+Urdf::Urdf(const Urdf& urdf)
+  : mbg(urdf.mbg)
+  , ql(urdf.ql)
+  , qu(urdf.qu)
+  , vl(urdf.vl)
+  , vu(urdf.vu)
+  , tl(urdf.tl)
+  , tu(urdf.tu)
+{}
+
+
 Urdf::Urdf(Urdf&& urdf)
 {
   std::swap(mbg, urdf.mbg);

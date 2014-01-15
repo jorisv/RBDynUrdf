@@ -171,6 +171,22 @@ Urdf::Urdf(Urdf&& urdf)
 }
 
 
+Urdf& Urdf::operator=(const Urdf& urdf)
+{
+  if(&urdf != this)
+  {
+    mbg = urdf.mbg;
+    ql = urdf.ql;
+    qu = urdf.qu;
+    vl = urdf.vl;
+    vu = urdf.vu;
+    tl = urdf.tl;
+    tu = urdf.tu;
+  }
+  return *this;
+}
+
+
 Urdf readUrdf(const std::string& urdf)
 {
   return mbgFromModel(urdf::parseURDF(urdf));

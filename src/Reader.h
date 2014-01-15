@@ -34,6 +34,8 @@ struct Urdf
   Urdf(const Urdf& urdf);
   Urdf(Urdf&& urdf);
 
+  Urdf& operator=(const Urdf& urdf);
+
   rbd::MultiBodyGraph mbg;
   /// joints position lower and upper bounds by joint id.
   std::map<int, double> ql, qu;

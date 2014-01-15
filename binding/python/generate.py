@@ -30,8 +30,6 @@ if __name__ == '__main__':
 
   run_ex = rbdyn_urdf.add_exception('std::runtime_error', foreign_cpp_namespace=' ',
                                     message_rvalue='%(EXC)s.what()')
-  out_ex = rbdyn_urdf.add_exception('std::out_of_range', foreign_cpp_namespace=' ',
-                                    message_rvalue='%(EXC)s.what()')
 
   # import rbd types
   import_rbd_types(rbdyn_urdf)
@@ -51,9 +49,11 @@ if __name__ == '__main__':
 
   # build function
   rbdyn_urdf.add_function('readUrdf', retval('rbdyn_urdf::Urdf'),
-                          [param('std::string', 'urdf')])
+                          [param('std::string', 'urdf')],
+                          throw=[run_ex])
   rbdyn_urdf.add_function('readUrdfFile', retval('rbdyn_urdf::Urdf'),
-                          [param('std::string', 'fileName')])
+                          [param('std::string', 'fileName')],
+                          throw=[run_ex])
 
   with open(sys.argv[1], 'w') as f:
     rbdyn_urdf.generate(f)

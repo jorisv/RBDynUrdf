@@ -15,32 +15,11 @@
 
 #pragma once
 
-// include
-// std
-#include <string>
-
-// RBDynUrdf
-#include "UrdfStruct.h"
+// associated header
+#include "Writer.h"
 
 namespace rbdyn_urdf
 {
-
-/**
- * @brief Create a MultiBodyGraph an his limits from a urdf string.
- * @param urdf urdf string.
- * @return MultiBodyGraph and his limits.
- * @throw runtime_error if the urdf file is not well formated.
- */
-Urdf readUrdf(const std::string& urdf);
-
-/**
- * @brief Create a MultiBodyGraph an his limits from a urdf file path.
- * @param urdf urdf file path.
- * @return MultiBodyGraph and his limits.
- * @throw runtime_error if the urdf file is not well formated or if the file
- * is not readable.
- */
-Urdf readUrdfFile(const std::string& fileName);
 
 
 } // rbdyn_urdf

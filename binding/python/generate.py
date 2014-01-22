@@ -27,6 +27,7 @@ if __name__ == '__main__':
 
   rbdyn_urdf = Module('_rbdyn_urdf', cpp_namespace='::rbdyn_urdf')
   rbdyn_urdf.add_include('<Reader.h>')
+  rbdyn_urdf.add_include('<Writer.h>')
 
   run_ex = rbdyn_urdf.add_exception('std::runtime_error', foreign_cpp_namespace=' ',
                                     message_rvalue='%(EXC)s.what()')
@@ -38,14 +39,17 @@ if __name__ == '__main__':
   rbdyn_urdf.add_container('std::map<int, double>', ('int', 'double'), 'map')
 
   # build struct
+  limits = rbdyn_urdf.add_struct('Limits')
+  limits.add_instance_attribute('ql', 'std::map<int, double>')
+  limits.add_instance_attribute('qu', 'std::map<int, double>')
+  limits.add_instance_attribute('vl', 'std::map<int, double>')
+  limits.add_instance_attribute('vu', 'std::map<int, double>')
+  limits.add_instance_attribute('tl', 'std::map<int, double>')
+  limits.add_instance_attribute('tu', 'std::map<int, double>')
+
   urdf = rbdyn_urdf.add_struct('Urdf')
   urdf.add_instance_attribute('mbg', 'rbd::MultiBodyGraph')
-  urdf.add_instance_attribute('ql', 'std::map<int, double>')
-  urdf.add_instance_attribute('qu', 'std::map<int, double>')
-  urdf.add_instance_attribute('vl', 'std::map<int, double>')
-  urdf.add_instance_attribute('vu', 'std::map<int, double>')
-  urdf.add_instance_attribute('tl', 'std::map<int, double>')
-  urdf.add_instance_attribute('tu', 'std::map<int, double>')
+  urdf.add_instance_attribute('limits', 'rbdyn_urdf::Limits')
 
   # build function
   rbdyn_urdf.add_function('readUrdf', retval('rbdyn_urdf::Urdf'),

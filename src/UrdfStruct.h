@@ -16,31 +16,49 @@
 #pragma once
 
 // include
-// std
-#include <string>
+//std
+#include <map>
 
-// RBDynUrdf
-#include "UrdfStruct.h"
+// RBDyn
+#include <RBDyn/MultiBodyGraph.h>
 
 namespace rbdyn_urdf
 {
 
 /**
- * @brief Create a MultiBodyGraph an his limits from a urdf string.
- * @param urdf urdf string.
- * @return MultiBodyGraph and his limits.
- * @throw runtime_error if the urdf file is not well formated.
+ * @brief Robot limits
  */
-Urdf readUrdf(const std::string& urdf);
+struct Limits
+{
+  Limits() {}
+  Limits(const Limits& limit);
+  Limits(Limits&& limit);
+
+  Limits& operator=(const Limits& limit);
+
+  /// joints position lower and upper bounds by joint id.
+  std::map<int, double> ql, qu;
+  /// joints velocity lower and upper bounds by joint id.
+  std::map<int, double> vl, vu;
+  /// joints torque lower and upper bounds by joint id.
+  std::map<int, double> tl, tu;
+};
+
+
 
 /**
- * @brief Create a MultiBodyGraph an his limits from a urdf file path.
- * @param urdf urdf file path.
- * @return MultiBodyGraph and his limits.
- * @throw runtime_error if the urdf file is not well formated or if the file
- * is not readable.
+ * @brief Reader return value.
  */
-Urdf readUrdfFile(const std::string& fileName);
+struct Urdf
+{
+  Urdf() {}
+  Urdf(const Urdf& urdf);
+  Urdf(Urdf&& urdf);
 
+  Urdf& operator=(const Urdf& urdf);
+
+  rbd::MultiBodyGraph mbg;
+  Limits limits;
+};
 
 } // rbdyn_urdf

@@ -183,29 +183,29 @@ rbdyn_urdf::Urdf makeXYZSarm()
                       4, from, 3);
 
   // fill limits
-  urdf.ql[0] = -1.;
-  urdf.ql[1] = -1.;
-  urdf.ql[2] = -1.;
+  urdf.limits.ql[0] = -1.;
+  urdf.limits.ql[1] = -1.;
+  urdf.limits.ql[2] = -1.;
 
-  urdf.qu[0] = 1.;
-  urdf.qu[1] = 1.;
-  urdf.qu[2] = 1.;
+  urdf.limits.qu[0] = 1.;
+  urdf.limits.qu[1] = 1.;
+  urdf.limits.qu[2] = 1.;
 
-  urdf.vl[0] = -10.;
-  urdf.vl[1] = -10.;
-  urdf.vl[2] = -10.;
+  urdf.limits.vl[0] = -10.;
+  urdf.limits.vl[1] = -10.;
+  urdf.limits.vl[2] = -10.;
 
-  urdf.vu[0] = 10.;
-  urdf.vu[1] = 10.;
-  urdf.vu[2] = 10.;
+  urdf.limits.vu[0] = 10.;
+  urdf.limits.vu[1] = 10.;
+  urdf.limits.vu[2] = 10.;
 
-  urdf.tl[0] = -50.;
-  urdf.tl[1] = -50.;
-  urdf.tl[2] = -50.;
+  urdf.limits.tl[0] = -50.;
+  urdf.limits.tl[1] = -50.;
+  urdf.limits.tl[2] = -50.;
 
-  urdf.tu[0] = 50.;
-  urdf.tu[1] = 50.;
-  urdf.tu[2] = 50.;
+  urdf.limits.tu[0] = 50.;
+  urdf.limits.tu[1] = 50.;
+  urdf.limits.tu[2] = 50.;
 
   return std::move(urdf);
 }

@@ -132,57 +132,18 @@ Urdf mbgFromModel(const boost::shared_ptr<urdf::ModelInterface>& model)
     // fill joint limits
     if(it.second->limits)
     {
-      urdf.ql[jointId] = it.second->limits->lower;
-      urdf.qu[jointId] = it.second->limits->upper;
-      urdf.vl[jointId] = -it.second->limits->velocity;
-      urdf.vu[jointId] = it.second->limits->velocity;
-      urdf.tl[jointId] = -it.second->limits->effort;
-      urdf.tu[jointId] = it.second->limits->effort;
+      urdf.limits.ql[jointId] = it.second->limits->lower;
+      urdf.limits.qu[jointId] = it.second->limits->upper;
+      urdf.limits.vl[jointId] = -it.second->limits->velocity;
+      urdf.limits.vu[jointId] = it.second->limits->velocity;
+      urdf.limits.tl[jointId] = -it.second->limits->effort;
+      urdf.limits.tu[jointId] = it.second->limits->effort;
     }
 
     ++jointId;
   }
 
   return std::move(urdf);
-}
-
-
-Urdf::Urdf(const Urdf& urdf)
-  : mbg(urdf.mbg)
-  , ql(urdf.ql)
-  , qu(urdf.qu)
-  , vl(urdf.vl)
-  , vu(urdf.vu)
-  , tl(urdf.tl)
-  , tu(urdf.tu)
-{}
-
-
-Urdf::Urdf(Urdf&& urdf)
-{
-  std::swap(mbg, urdf.mbg);
-  std::swap(ql, urdf.ql);
-  std::swap(qu, urdf.qu);
-  std::swap(vl, urdf.vl);
-  std::swap(vu, urdf.vu);
-  std::swap(tl, urdf.tl);
-  std::swap(tu, urdf.tu);
-}
-
-
-Urdf& Urdf::operator=(const Urdf& urdf)
-{
-  if(&urdf != this)
-  {
-    mbg = urdf.mbg;
-    ql = urdf.ql;
-    qu = urdf.qu;
-    vl = urdf.vl;
-    vu = urdf.vu;
-    tl = urdf.tl;
-    tu = urdf.tu;
-  }
-  return *this;
 }
 
 

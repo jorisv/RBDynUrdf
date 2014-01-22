@@ -66,22 +66,28 @@ BOOST_AUTO_TEST_CASE(loadTest)
 
   // check limits
   // position
-  BOOST_CHECK(std::equal(urdfFromLoader.ql.begin(), urdfFromLoader.ql.end(),
-                         urdfFromCpp.ql.begin()));
-  BOOST_CHECK(std::equal(urdfFromLoader.qu.begin(), urdfFromLoader.qu.end(),
-                         urdfFromCpp.qu.begin()));
+  BOOST_CHECK(std::equal(urdfFromLoader.limits.ql.begin(),
+                         urdfFromLoader.limits.ql.end(),
+                         urdfFromCpp.limits.ql.begin()));
+  BOOST_CHECK(std::equal(urdfFromLoader.limits.qu.begin(),
+                         urdfFromLoader.limits.qu.end(),
+                         urdfFromCpp.limits.qu.begin()));
 
   // velocity
-  BOOST_CHECK(std::equal(urdfFromLoader.vl.begin(), urdfFromLoader.vl.end(),
-                         urdfFromCpp.vl.begin()));
-  BOOST_CHECK(std::equal(urdfFromLoader.vu.begin(), urdfFromLoader.vu.end(),
-                         urdfFromCpp.vu.begin()));
+  BOOST_CHECK(std::equal(urdfFromLoader.limits.vl.begin(),
+                         urdfFromLoader.limits.vl.end(),
+                         urdfFromCpp.limits.vl.begin()));
+  BOOST_CHECK(std::equal(urdfFromLoader.limits.vu.begin(),
+                         urdfFromLoader.limits.vu.end(),
+                         urdfFromCpp.limits.vu.begin()));
 
   // torque
-  BOOST_CHECK(std::equal(urdfFromLoader.tl.begin(), urdfFromLoader.tl.end(),
-                         urdfFromCpp.tl.begin()));
-  BOOST_CHECK(std::equal(urdfFromLoader.tu.begin(), urdfFromLoader.tu.end(),
-                         urdfFromCpp.tu.begin()));
+  BOOST_CHECK(std::equal(urdfFromLoader.limits.tl.begin(),
+                         urdfFromLoader.limits.tl.end(),
+                         urdfFromCpp.limits.tl.begin()));
+  BOOST_CHECK(std::equal(urdfFromLoader.limits.tu.begin(),
+                         urdfFromLoader.limits.tu.end(),
+                         urdfFromCpp.limits.tu.begin()));
 
   // check bodies
   for(int i = 0; i < mbLoader.nrBodies(); ++i)

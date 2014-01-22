@@ -1,5 +1,5 @@
-set(SOURCES Reader.cpp)
-set(HEADERS Reader.h)
+set(SOURCES Reader.cpp Writer.cpp UrdfStruct.cpp)
+set(HEADERS Reader.h Writer.h UrdfStruct.h)
 
 add_library(RBDynUrdf SHARED ${SOURCES} ${HEADERS})
 PKG_CONFIG_USE_DEPENDENCY(RBDynUrdf urdfdom_headers)

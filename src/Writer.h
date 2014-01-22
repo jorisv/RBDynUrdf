@@ -19,28 +19,20 @@
 // std
 #include <string>
 
-// RBDynUrdf
-#include "UrdfStruct.h"
+// forward declaration
+namespace rbd
+{
+  class MultiBody;
+}
 
 namespace rbdyn_urdf
 {
+// forward declaration
+class Limits;
 
-/**
- * @brief Create a MultiBodyGraph an his limits from a urdf string.
- * @param urdf urdf string.
- * @return MultiBodyGraph and his limits.
- * @throw runtime_error if the urdf file is not well formated.
- */
-Urdf readUrdf(const std::string& urdf);
+void writeUrdf(const std::string& filename, const rbd::MultiBody& mb);
 
-/**
- * @brief Create a MultiBodyGraph an his limits from a urdf file path.
- * @param urdf urdf file path.
- * @return MultiBodyGraph and his limits.
- * @throw runtime_error if the urdf file is not well formated or if the file
- * is not readable.
- */
-Urdf readUrdfFile(const std::string& fileName);
-
+void writeUrdf(const std::string& filename, const rbd::MultiBody& mb,
+               const Limits& limits);
 
 } // rbdyn_urdf

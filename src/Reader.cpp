@@ -49,13 +49,12 @@ rbd::Joint::Type urdfJointTypeToRbd(int type)
   switch(type)
   {
   case urdf::Joint::REVOLUTE:
+  case urdf::Joint::CONTINUOUS:
     return rbd::Joint::Rev;
   case urdf::Joint::FIXED:
     return rbd::Joint::Fixed;
   case urdf::Joint::PRISMATIC:
     return rbd::Joint::Prism;
-  case urdf::Joint::CONTINUOUS:
-    return rbd::Joint::Spherical;
   case urdf::Joint::FLOATING:
     return rbd::Joint::Free;
 

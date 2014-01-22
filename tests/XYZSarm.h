@@ -30,7 +30,7 @@
 // XYZSarm Robot
 
 //                b4
-//             j3 | Spherical
+//             j3 | RevX
 //  Root     j0   |   j1     j2
 //  ---- b0 ---- b1 ---- b2 ----b3
 //  Fixed    RevX   RevY    RevZ
@@ -110,6 +110,7 @@ R"(
       <parent link="b1" />
       <child link="b4" />
       <origin rpy="1. 0 0" xyz="1 0 0" />
+      <axis xyz="1 0 0" />
     </joint>
   </robot>
 )"
@@ -164,7 +165,7 @@ rbdyn_urdf::Urdf makeXYZSarm()
   Joint j0(Joint::RevX, true, 0, "j0");
   Joint j1(Joint::RevY, true, 1, "j1");
   Joint j2(Joint::RevZ, true, 2, "j2");
-  Joint j3(Joint::Spherical, true, 3, "j3");
+  Joint j3(Joint::RevX, true, 3, "j3");
 
   urdf.mbg.addJoint(j0);
   urdf.mbg.addJoint(j1);

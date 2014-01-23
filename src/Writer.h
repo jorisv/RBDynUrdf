@@ -30,9 +30,24 @@ namespace rbdyn_urdf
 // forward declaration
 class Limits;
 
+/**
+ * @brief write the MultiBody mb as an urdf file.
+ * @param filename File where to write the urdf.
+ * @param robotName Name of the robot in the urdf file.
+ * @param mb MultiBody to write in the urdf.
+ * @throw runtime_error if the file is not writable or if joints type are wrong.
+ */
 void writeUrdf(const std::string& filename, const std::string& robotName,
                const rbd::MultiBody& mb);
 
+/**
+ * @brief write the MultiBody mb as an urdf file.
+ * @param filename File where to write the urdf.
+ * @param robotName Name of the robot in the urdf file.
+ * @param mb MultiBody to write in the urdf.
+ * @param limits MultiBody joint limits.
+ * @throw runtime_error if the file is not writable or if joints type are wrong.
+ */
 void writeUrdf(const std::string& filename, const std::string& robotName,
                const rbd::MultiBody& mb, const Limits& limits);
 

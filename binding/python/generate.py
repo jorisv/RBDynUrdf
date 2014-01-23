@@ -19,6 +19,7 @@ import sys
 
 def import_rbd_types(mod):
   mod.add_class('MultiBodyGraph', foreign_cpp_namespace='rbd', import_from_module='rbdyn')
+  mod.add_class('MultiBody', foreign_cpp_namespace='rbd', import_from_module='rbdyn')
 
 
 if __name__ == '__main__':
@@ -53,10 +54,22 @@ if __name__ == '__main__':
 
   # build function
   rbdyn_urdf.add_function('readUrdf', retval('rbdyn_urdf::Urdf'),
-                          [param('std::string', 'urdf')],
+                          [param('const std::string&', 'urdf')],
                           throw=[run_ex])
   rbdyn_urdf.add_function('readUrdfFile', retval('rbdyn_urdf::Urdf'),
-                          [param('std::string', 'fileName')],
+                          [param('const std::string&', 'fileName')],
+                          throw=[run_ex])
+
+  rbdyn_urdf.add_function('writeUrdf', None,
+                          [param('const std::string&', 'filename'),
+                           param('const std::string&', 'robotName'),
+                           param('const rbd::MultiBody&', 'mb'),
+                           param('const rbdyn_urdf::Limits&', 'limits')],
+                          throw=[run_ex])
+  rbdyn_urdf.add_function('writeUrdf', None,
+                          [param('const std::string&', 'filename'),
+                           param('const std::string&', 'robotName'),
+                           param('const rbd::MultiBody&', 'mb')],
                           throw=[run_ex])
 
   with open(sys.argv[1], 'w') as f:

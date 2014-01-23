@@ -30,9 +30,10 @@ namespace rbdyn_urdf
 // forward declaration
 class Limits;
 
-void writeUrdf(const std::string& filename, const rbd::MultiBody& mb);
+void writeUrdf(const std::string& filename, const std::string& robotName,
+               const rbd::MultiBody& mb);
 
-void writeUrdf(const std::string& filename, const rbd::MultiBody& mb,
-               const Limits& limits);
+void writeUrdf(const std::string& filename, const std::string& robotName,
+               const rbd::MultiBody& mb, const Limits& limits);
 
 } // rbdyn_urdf

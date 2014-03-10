@@ -179,7 +179,7 @@ rbdyn_urdf::Urdf makeXYZSarm()
   urdf.mbg.linkBodies(0, to, 1, from, 0);
   urdf.mbg.linkBodies(1, to, 2, from, 1);
   urdf.mbg.linkBodies(2, to, 3, from, 2);
-  urdf.mbg.linkBodies(1, PTransformd(sva::RotX(-1.), Vector3d(1., 0., 0.)),
+  urdf.mbg.linkBodies(1, PTransformd(sva::RotX(1.), Vector3d(1., 0., 0.)),
                       4, from, 3);
 
   // fill limits

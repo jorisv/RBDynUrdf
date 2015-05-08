@@ -90,10 +90,11 @@ void fillUrdfJoint(const rbd::Joint& rbdJ, const Limits& limits, urdf::Joint& ur
     urdfJ.type = urdf::Joint::PRISMATIC;
     urdfJ.axis = fromEigen(Eigen::Vector3d(rbdJ.motionSubspace().block<3,1>(3,0)));
     break;
+  case rbd::Joint::Free:
+    urdfJ.type = urdf::Joint::FLOATING;
+    break;
   case rbd::Joint::Spherical:
     throw std::runtime_error("Impossible to export spherical joint to urdf");
-  case rbd::Joint::Free:
-    throw std::runtime_error("Impossible to export free joint to urdf");
   default:
     throw std::runtime_error("Unknow RBDyn joint type");
   }

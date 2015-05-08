@@ -90,6 +90,10 @@ void fillUrdfJoint(const rbd::Joint& rbdJ, const Limits& limits, urdf::Joint& ur
     urdfJ.type = urdf::Joint::PRISMATIC;
     urdfJ.axis = fromEigen(Eigen::Vector3d(rbdJ.motionSubspace().block<3,1>(3,0)));
     break;
+  case rbd::Joint::Planar:
+    urdfJ.type = urdf::Joint::PLANAR;
+    urdfJ.axis = fromEigen(Eigen::Vector3d(Eigen::Vector3d::UnitZ()));
+    break;
   case rbd::Joint::Free:
     urdfJ.type = urdf::Joint::FLOATING;
     break;

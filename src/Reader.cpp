@@ -57,9 +57,10 @@ rbd::Joint::Type urdfJointTypeToRbd(int type)
     return rbd::Joint::Prism;
   case urdf::Joint::FLOATING:
     return rbd::Joint::Free;
+  case urdf::Joint::PLANAR:
+    return rbd::Joint::Planar;
 
   // unknown joint type
-  case urdf::Joint::PLANAR:
   case urdf::Joint::UNKNOWN:
   default:
     throw std::runtime_error("Unknow joint type");
